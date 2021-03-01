@@ -72,9 +72,9 @@ func _get_obj_filename(thing):
 			# If it isn't a packed scene and it doesn't have a script then
 			# we do nothing.  This just read better.
 			pass
-	elif(thing.get_script() is NativeScript):
-		# Work with GDNative scripts:
-		# inst2dict fails with "Not a script with an instance" on GDNative script instances
+	elif(thing.get_script() is NativeScript or thing.get_script() is CSharpScript):
+		# Work with GDNative and CSharpScripts scripts:
+		# inst2dict fails with "Not a script with an instance" on GDNative and CSharpScript script instances
 		filename = _get_filename(thing.get_script().resource_path)
 	elif(!_utils.is_native_class(thing)):
 		var dict = inst2dict(thing)
